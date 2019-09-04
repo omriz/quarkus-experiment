@@ -4,11 +4,9 @@ import il.omriz.quarkusexperiment.database.LinkEntry;
 import il.omriz.quarkusexperiment.database.LinksDBInterface;
 
 import javax.inject.Inject;
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.awt.*;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +28,7 @@ public class LinkManagmentHandler {
 
     @GET
     public List<LinkEntry> list() {
-        ArrayList linksList = new ArrayList();
+        ArrayList<LinkEntry> linksList = new ArrayList<LinkEntry>();
         for (Map.Entry<String, URI> entry : linksDBInterface.listLinks().entrySet()) {
             linksList.add(new LinkEntry(entry.getKey(), entry.getValue().toString()));
         }
