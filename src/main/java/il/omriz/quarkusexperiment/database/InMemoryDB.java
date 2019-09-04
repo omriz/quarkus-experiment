@@ -3,6 +3,7 @@ package il.omriz.quarkusexperiment.database;
 import javax.enterprise.context.ApplicationScoped;
 import java.net.URI;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -24,6 +25,10 @@ public class InMemoryDB implements LinksDBInterface{
         readWriteLock.writeLock().lock();
         links.put(alias, link);
         readWriteLock.writeLock().unlock();
+    }
+    
+    public Map<String,URI> listLinks() {
+        return links;
     }
 
     private HashMap<String, URI> links = new HashMap<>();
